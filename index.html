@@ -103,9 +103,9 @@ footer{text-align:center;font-family:var(--f-label);font-size:10px;letter-spacin
     <a class="game" href="https://ge-buerendle.github.io/minuteman_vocab_u1/">
       <canvas id="g4" width="160" height="96" aria-hidden="true"></canvas>
       <div class="info">
-        <span class="tag" style="background:#c47a00">VOCABULARY · UNIT 1</span>
-        <h2>Vocab Flight – Unit 1</h2>
-        <p>M1S-T4K3 is hiding in the school with our words! Chase him through the corridors and pick the door with the right English word.</p>
+        <span class="tag" style="background:#c47a00">VOCABULARY · YEAR 5</span>
+        <h2>Vocab Flight – Year 5</h2>
+        <p>Choose a unit and chase M1S-T4K3 through six worlds – from the school corridor to the seaside. Pick the door or gate with the right English word!</p>
         <span class="play">PLAY ▶</span>
       </div>
     </a>
@@ -185,7 +185,7 @@ function draw(){
       box(c,x+wd-6,y-6,12,12,'#f4d35e');txt(c,n,x+wd,y+0.5,'#3b3a5c',9)});
   spr(c,BOT,BPAL,112,52,2);
 
-  /* 4: Vocab Flight – Unit 1 — Minute Man flies down a school corridor towards three classroom doors */
+  /* 4: Vocab Flight – Year 5 — Minute Man flies down a school corridor towards three classroom doors */
   c=pctx('g4');const P=(pts,col)=>{c.fillStyle=col;c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fill()};
   P([[0,0],[160,0],[116,24],[44,24]],'#f4f0e6');P([[66,2],[94,2],[90,8],[70,8]],'#fffbe0');
   P([[0,0],[44,24],[44,72],[0,96]],'#cdeee2');P([[160,0],[116,24],[116,72],[160,96]],'#cdeee2');
