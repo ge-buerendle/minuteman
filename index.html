@@ -142,6 +142,8 @@ const MM=[
 "....kkk..kkk...."];
 const MMPAL={k:'#3b3a5c',h:'#7a4e2d',m:'#3d6fd9',b:'#3d6fd9',c:'#e5484d',d:'#b8323a',w:'#fffaf2',y:'#f4d35e'};
 const ctx=id=>document.getElementById(id).getContext('2d');
+/* previews: draw in 160×96 units on a 4× canvas, so text and edges stay sharp */
+const pctx=id=>{const cv=document.getElementById(id);cv.width=640;cv.height=384;const c=cv.getContext('2d');c.setTransform(4,0,0,4,0,0);c.imageSmoothingEnabled=false;return c};
 const box=(c,x,y,w,h,fill,edge)=>{c.fillStyle=edge||'#5b5a8a';c.fillRect(x,y,w,h);c.fillStyle=fill;c.fillRect(x+1,y+1,w-2,h-2)};
 const txt=(c,t,x,y,col,size)=>{c.fillStyle=col||'#3b3a5c';c.font=`700 ${size||9}px "Pixelify Clear","Pixelify Sans",monospace`;c.textAlign='center';c.textBaseline='middle';c.fillText(t,x,y)};
 
@@ -149,7 +151,7 @@ spr(ctx('sm'),SM,SPAL,0,0,1);
 
 function draw(){
   /* 1: Laser Grammar — robot above a coloured word line, laser beam hitting a word */
-  let c=ctx('g1');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  let c=pctx('g1');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
   c.fillStyle='#b9d4f5';for(let i=0;i<160;i+=16)c.fillRect(i,0,8,96);
   spr(c,BOT,BPAL,59,4,3);
   [['cat','#ff7b7b',6,38],['sleeps','#6aaeff',46,46],['red','#f7d154',94,30],['now','#bf95ff',126,30]]
@@ -158,7 +160,7 @@ function draw(){
   c.fillStyle='#fff';c.fillRect(67,58,2,12);c.fillRect(87,58,2,12);
 
   /* 2: Where is M1S-T4K3? — robot peeking out from behind a crate */
-  c=ctx('g2');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  c=pctx('g2');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
   c.fillStyle='#9fd18f';c.fillRect(0,74,160,22);c.fillStyle='#7fbf72';c.fillRect(0,74,160,3);
   c.fillStyle='#fff';[[14,14],[22,10],[30,14]].forEach(([x,y])=>c.fillRect(x,y,14,6));
   spr(c,BOT,BPAL,92,24,3);
@@ -167,7 +169,7 @@ function draw(){
   txt(c,'?',140,18,'#e5484d',22);
 
   /* 3: Fix It — scrambled sentence blocks with order numbers */
-  c=ctx('g3');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  c=pctx('g3');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
   c.fillStyle='#b9d4f5';for(let i=0;i<96;i+=16)c.fillRect(0,i,160,8);
   [['football','#fffaf2',6,14,60,'3'],['I','#fffaf2',112,8,24,'1'],['play','#fffaf2',70,36,36,'2'],['today','#fffaf2',20,56,44,'4']]
     .forEach(([w,col,x,y,wd,n])=>{box(c,x,y,wd,18,col);txt(c,w,x+wd/2,y+9.5,'#3b3a5c',10);
@@ -175,7 +177,7 @@ function draw(){
   spr(c,BOT,BPAL,112,52,2);
 
   /* 4: Vocab Flight – Unit 1 — Minute Man from behind, flying down a street towards three word gates */
-  c=ctx('g4');c.fillStyle='#d8e2ff';c.fillRect(0,0,160,96);c.fillStyle='#f2def3';c.fillRect(0,26,160,14);
+  c=pctx('g4');c.fillStyle='#d8e2ff';c.fillRect(0,0,160,96);c.fillStyle='#f2def3';c.fillRect(0,26,160,14);
   c.fillStyle='#fff';c.fillRect(14,8,18,4);c.fillRect(18,5,10,3);c.fillRect(118,12,16,4);
   c.fillStyle='#8f8bb8';c.beginPath();c.moveTo(66,40);c.lineTo(94,40);c.lineTo(160,96);c.lineTo(0,96);c.closePath();c.fill();
   [[0,10,30,'#f4b6c2'],[22,22,20,'#c7e9b4'],[36,30,12,'#ffe2a8']].forEach(([x,y,w,col])=>{c.fillStyle=col;c.fillRect(x,y,w,96-y);c.fillStyle='#fff3b0';for(let j=y+4;j<90;j+=8)c.fillRect(x+3,j,4,4)});
