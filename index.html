@@ -159,14 +159,21 @@ const txt=(c,t,x,y,col,size)=>{c.fillStyle=col||'#3b3a5c';c.font=`700 ${size||9}
 spr(ctx('sm'),SM,SPAL,0,0,1);
 
 function draw(){
-  /* 1: Laser Grammar — robot above a coloured word line, laser beam hitting a word */
-  let c=pctx('g1');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
-  c.fillStyle='#b9d4f5';for(let i=0;i<160;i+=16)c.fillRect(i,0,8,96);
-  spr(c,BOT,BPAL,59,4,3);
-  [['cat','#ff7b7b',6,38],['sleeps','#6aaeff',46,46],['red','#f7d154',94,30],['now','#bf95ff',126,30]]
-    .forEach(([w,col,x,wd])=>{box(c,x,70,wd,18,col);txt(c,w,x+wd/2,79.5,'#3b3a5c',10)});
-  c.fillStyle='#ff3b3b';c.fillRect(66,58,4,12);c.fillRect(86,58,4,12);
-  c.fillStyle='#fff';c.fillRect(67,58,2,12);c.fillRect(87,58,2,12);
+  /* 1: Laser Grammar — city at dusk, robot, hanging word signs, Minute Man's laser eyes hitting the noun */
+  let c=pctx('g1');const R=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h)};
+  ['#cfe3ff','#d9dcff','#e6d8fb','#f4d9ee','#ffe2dc'].forEach((col,i)=>R(0,i*20,160,20,col));
+  R(14,12,18,4,'#fff');R(18,9,10,3,'#fff');R(122,18,16,4,'#fff');R(126,15,8,3,'#fff');
+  [[0,30],[20,42],[42,24],[96,36],[118,48],[140,30]].forEach(([x,h],i)=>{R(x,96-h,22,h,i%2?'#bfb8ea':'#cbc4f0');
+    for(let yy=96-h+4;yy<92;yy+=7)for(let xx=x+3;xx<x+19;xx+=6)if((xx+yy)%3)R(xx,yy,3,3,'#fff3b0')});
+  R(0,90,160,6,'#a7a2d6');
+  spr(c,BOT,BPAL,66,3,2);
+  const W=[['The',8,28,null],['cat',42,28,'#ff7b7b'],['sleeps',76,40,null],['now',122,30,null]];
+  W.forEach(([w,x,wd,hit])=>{const y=44;
+    R(x+wd/2-.5,y-6,1,6,'#5b5a8a');R(x+wd/2-4,y-7,8,1,'#5b5a8a');
+    box(c,x,y,wd,16,hit||'#fffaf2');txt(c,w,x+wd/2,y+8.5,'#3b3a5c',10)});
+  c.lineCap='round';[[68,98],[92,98]].forEach(([ox,oy])=>{c.strokeStyle='#e5484d';c.lineWidth=3;c.beginPath();c.moveTo(ox,oy);c.lineTo(56,61);c.stroke();c.strokeStyle='#fff';c.lineWidth=1;c.stroke()});
+  [[48,64],[63,64],[44,58],[66,58],[56,66]].forEach(([x,y])=>R(x,y,2,2,'#ff7b7b'));
+  txt(c,'NOUN!',56,35,'#e5484d',8);
 
   /* 2: Where is M1S-T4K3? — robot peeking out from behind a crate */
   c=pctx('g2');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
