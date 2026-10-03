@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minute Man Arcade</title>
+<meta name="theme-color" content="#e7e2ff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Silkscreen&display=swap">
+<style>
+:root{
+  --sky:#e7e2ff; --ink:#3b3a5c; --panel:#fffaf2; --edge:#5b5a8a;
+  --mm-blue:#3d6fd9; --mm-red:#e5484d; --sm-green:#5bb86a; --sm-yellow:#f4d35e;
+  --soft:#cfc9f3;
+  --f-pix:"Pixelify Sans","Courier New",monospace; --f-label:"Silkscreen","Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--sky);color:var(--ink);font-family:var(--f-pix);font-size:16px;padding:20px 16px 32px;
+  background-image:radial-gradient(var(--soft) 1px,transparent 1px);background-size:12px 12px;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{text-align:center}
+h1{margin:0;font-size:clamp(34px,10vw,56px);line-height:1;color:var(--mm-red);text-shadow:3px 3px 0 var(--sm-yellow),5px 5px 0 var(--edge)}
+.sub{font-family:var(--f-label);font-size:12px;letter-spacing:.08em;margin:12px 0 0}
+.comms{display:flex;gap:10px;align-items:flex-end;max-width:520px;margin:0 auto;width:100%}
+#sm{width:42px;height:56px;image-rendering:pixelated;flex:none;animation:bob 1.6s steps(2) infinite}
+@keyframes bob{50%{transform:translateY(-3px)}}
+.bubble{position:relative;flex:1;background:var(--panel);border:3px solid var(--edge);padding:6px 10px;font-size:15px;line-height:1.3;box-shadow:2px 2px 0 var(--edge)}
+.bubble b{font-family:var(--f-label);font-weight:400;font-size:10px;color:var(--sm-green);display:block;letter-spacing:.06em}
+.bubble::before{content:"";position:absolute;left:-12px;bottom:14px;border:6px solid transparent;border-right-color:var(--edge)}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.game{display:flex;flex-direction:column;background:var(--panel);border:4px solid var(--edge);box-shadow:6px 6px 0 var(--edge);color:inherit;text-decoration:none;transition:transform .08s}
+.game:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--edge)}
+.game:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--edge)}
+.game:focus-visible{outline:3px solid var(--mm-blue);outline-offset:4px}
+.game canvas{display:block;width:100%;height:auto;image-rendering:pixelated;border-bottom:4px solid var(--edge)}
+.info{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tag{align-self:flex-start;font-family:var(--f-label);font-size:10px;letter-spacing:.04em;padding:2px 6px;border:2px solid var(--edge);color:#fff}
+h2{margin:0;font-size:24px;line-height:1.05}
+.info p{margin:0;line-height:1.35;flex:1}
+.play{align-self:flex-start;font-weight:700;font-size:18px;background:var(--mm-red);color:#fff;border:3px solid var(--edge);box-shadow:3px 3px 0 var(--edge);padding:6px 14px}
+footer{text-align:center;font-family:var(--f-label);font-size:10px;letter-spacing:.06em;opacity:.7}
+@media (prefers-reduced-motion:reduce){#sm{animation:none}.game{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>MINUTE MAN<br>ARCADE</h1>
+    <p class="sub">ENGLISH DEPARTMENT · GESAMTSCHULE BÜREN</p>
+  </header>
+
+  <div class="comms">
+    <canvas id="sm" width="12" height="16" aria-hidden="true"></canvas>
+    <div class="bubble"><b>SECOND MAN</b>M1S-T4K3 is back! Choose your mission, Minute Man.</div>
+  </div>
+
+  <main class="games">
+    <a class="game" href="https://ge-buerendle.github.io/minuteman_pos/">
+      <canvas id="g1" width="160" height="96" aria-hidden="true"></canvas>
+      <div class="info">
+        <span class="tag" style="background:#e5484d">PARTS OF SPEECH</span>
+        <h2>Laser Grammar</h2>
+        <p>Nouns, verbs, adjectives, adverbs: shoot the right words with your laser eyes.</p>
+        <span class="play">PLAY ▶</span>
+      </div>
+    </a>
+    <a class="game" href="https://ge-buerendle.github.io/minuteman_hide-and-seek/">
+      <canvas id="g2" width="160" height="96" aria-hidden="true"></canvas>
+      <div class="info">
+        <span class="tag" style="background:#3d6fd9">PREPOSITIONS OF PLACE</span>
+        <h2>Where is M1S-T4K3?</h2>
+        <p>The robot is hiding! Find him and say where he is: in, on, under, behind …</p>
+        <span class="play">PLAY ▶</span>
+      </div>
+    </a>
+    <a class="game" href="https://ge-buerendle.github.io/minuteman_word-order/">
+      <canvas id="g3" width="160" height="96" aria-hidden="true"></canvas>
+      <div class="info">
+        <span class="tag" style="background:#3a8a47">WORD ORDER</span>
+        <h2>Fix It, Minute Man!</h2>
+        <p>The sentences are all mixed up. Shoot the words in the right order.</p>
+        <span class="play">PLAY ▶</span>
+      </div>
+    </a>
+    <a class="game" href="https://ge-buerendle.github.io/minuteman_vocab_u1/">
+      <canvas id="g4" width="160" height="96" aria-hidden="true"></canvas>
+      <div class="info">
+        <span class="tag" style="background:#c47a00">VOCABULARY · UNIT 1</span>
+        <h2>Vocab Flight</h2>
+        <p>M1S-T4K3 has stolen our words! Fly through the gate with the right English word.</p>
+        <span class="play">PLAY ▶</span>
+      </div>
+    </a>
+  </main>
+
+  <footer>MORE MISSIONS COMING SOON</footer>
+</div>
+
+<script>
+function spr(c,rows,pal,x,y,s){rows.forEach((r,j)=>{for(let i=0;i<r.length;i++){const k=pal[r[i]];if(k){c.fillStyle=k;c.fillRect(x+i*s,y+j*s,s,s)}}})}
+const BOT=["......aa......",".......d......","..dddddddddd..","..dlllllllld..","..dlollllold..","..dlllllllld..","..dlttttttld..","..dddddddddd..","....dddddd....",".ddrrrrrrrrdd.","d.drrtrrtrrd.d","d.drrrrrrrrd.d","..drrrrrrrrd..","...dd....dd..."];
+const BPAL={a:'#ffd166',d:'#6b6f9e',l:'#e3e8f7',o:'#ff6b81',t:'#8de0d0',r:'#b8c4e0'};
+const SM=["...hhhhhh...","..hhhhhhhh..","..hsssssshh.","..mmmmmmmm..","..mekmmekm..","...ssssss...","...sskkss...","..yggggggy..",".yggggggggy.",".yggyyyyggy.","yyggggggggyy","yysggggggsyy","yy.gggggg.yy","y..gg..gg..y","...gg..gg...","...bb..bb..."];
+const SPAL={h:'#c98a4b',s:'#f6c9a0',m:'#3fa34d',g:'#6cc070',y:'#f4d35e',e:'#fff',k:'#3b3a5c',b:'#3a7d44'};
+const ctx=id=>document.getElementById(id).getContext('2d');
+const box=(c,x,y,w,h,fill,edge)=>{c.fillStyle=edge||'#5b5a8a';c.fillRect(x,y,w,h);c.fillStyle=fill;c.fillRect(x+1,y+1,w-2,h-2)};
+const txt=(c,t,x,y,col,size)=>{c.fillStyle=col||'#3b3a5c';c.font=`700 ${size||9}px "Pixelify Sans",monospace`;c.textAlign='center';c.textBaseline='middle';c.fillText(t,x,y)};
+
+spr(ctx('sm'),SM,SPAL,0,0,1);
+
+function draw(){
+  /* 1: Laser Grammar — robot above a coloured word line, laser beam hitting a word */
+  let c=ctx('g1');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  c.fillStyle='#b9d4f5';for(let i=0;i<160;i+=16)c.fillRect(i,0,8,96);
+  spr(c,BOT,BPAL,59,4,3);
+  [['cat','#ff7b7b',6,38],['sleeps','#6aaeff',46,46],['red','#f7d154',94,30],['now','#bf95ff',126,30]]
+    .forEach(([w,col,x,wd])=>{box(c,x,70,wd,18,col);txt(c,w,x+wd/2,79.5,'#3b3a5c',10)});
+  c.fillStyle='#ff3b3b';c.fillRect(66,58,4,12);c.fillRect(86,58,4,12);
+  c.fillStyle='#fff';c.fillRect(67,58,2,12);c.fillRect(87,58,2,12);
+
+  /* 2: Where is M1S-T4K3? — robot peeking out from behind a crate */
+  c=ctx('g2');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  c.fillStyle='#9fd18f';c.fillRect(0,74,160,22);c.fillStyle='#7fbf72';c.fillRect(0,74,160,3);
+  c.fillStyle='#fff';[[14,14],[22,10],[30,14]].forEach(([x,y])=>c.fillRect(x,y,14,6));
+  spr(c,BOT,BPAL,92,24,3);
+  box(c,62,40,62,38,'#d9a066');c.fillStyle='#b9814d';c.fillRect(64,52,58,2);c.fillRect(64,64,58,2);
+  box(c,10,48,36,26,'#e9b949');c.fillStyle='#c99a30';c.fillRect(12,60,32,2);
+  txt(c,'?',140,18,'#e5484d',22);
+
+  /* 3: Fix It — scrambled sentence blocks with order numbers */
+  c=ctx('g3');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  c.fillStyle='#b9d4f5';for(let i=0;i<96;i+=16)c.fillRect(0,i,160,8);
+  [['football','#fffaf2',6,14,60,'3'],['I','#fffaf2',112,8,24,'1'],['play','#fffaf2',70,36,36,'2'],['today','#fffaf2',20,56,44,'4']]
+    .forEach(([w,col,x,y,wd,n])=>{box(c,x,y,wd,18,col);txt(c,w,x+wd/2,y+9.5,'#3b3a5c',10);
+      box(c,x+wd-6,y-6,12,12,'#f4d35e');txt(c,n,x+wd,y+0.5,'#3b3a5c',9)});
+  spr(c,BOT,BPAL,112,52,2);
+
+  /* 4: Vocab Flight — German word on top, robot flying away, two word gates */
+  c=ctx('g4');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
+  c.fillStyle='#fff';[[8,40,20],[120,70,24],[60,84,16]].forEach(([x,y,w])=>{c.fillRect(x,y,w,6);c.fillRect(x+4,y-3,w-8,3)});
+  box(c,40,4,80,16,'#fffaf2');txt(c,'Schule',80,12.5,'#3b3a5c',10);
+  spr(c,BOT,BPAL,128,2,2);
+  c.fillStyle='#ffd166';c.fillRect(122,14,4,2);c.fillRect(115,18,6,2);
+  [['school',14,'#5bb86a'],['house',84,'#e5484d']].forEach(([w,x,col])=>{
+    c.fillStyle='#5b5a8a';c.fillRect(x,34,4,56);c.fillRect(x+54,34,4,56);
+    c.fillStyle=col;c.fillRect(x+1,35,2,54);c.fillRect(x+55,35,2,54);
+    box(c,x,30,58,16,'#fffaf2');txt(c,w,x+29,38.5,'#3b3a5c',10)});
+}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(draw);
+</script>
+</body>
+</html>
