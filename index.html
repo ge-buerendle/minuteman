@@ -184,13 +184,19 @@ function draw(){
   box(c,10,48,36,26,'#e9b949');c.fillStyle='#c99a30';c.fillRect(12,60,32,2);
   txt(c,'?',140,18,'#e5484d',22);
 
-  /* 3: Fix It — scrambled sentence blocks with order numbers */
-  c=pctx('g3');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
-  c.fillStyle='#b9d4f5';for(let i=0;i<96;i+=16)c.fillRect(0,i,160,8);
-  [['football','#fffaf2',6,14,60,'3'],['I','#fffaf2',112,8,24,'1'],['play','#fffaf2',70,36,36,'2'],['today','#fffaf2',20,56,44,'4']]
-    .forEach(([w,col,x,y,wd,n])=>{box(c,x,y,wd,18,col);txt(c,w,x+wd/2,y+9.5,'#3b3a5c',10);
-      box(c,x+wd-6,y-6,12,12,'#f4d35e');txt(c,n,x+wd,y+0.5,'#3b3a5c',9)});
-  spr(c,BOT,BPAL,112,52,2);
+  /* 3: Fix It — robot lab: scrambled sentence parts with order numbers, laser eyes hit part 1 */
+  c=pctx('g3');{const R=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h)};
+  R(0,0,160,96,'#dcd3fb');for(let y=6;y<80;y+=12)R(0,y,160,1,'#d0c5f5');for(let x=6;x<160;x+=12)R(x,0,1,80,'#d0c5f5');
+  [[0,26,22,0],[138,62,22,1]].forEach(([x,y,w,i])=>{R(x,y,w,1,'#c2b4ee');R(x+(i?0:w-2),y-1,2,3,'#c2b4ee');R(x+(i?6:12),y-1,2,2,'#fff3b0')});
+  R(0,80,160,16,'#c9bdf0');for(let x=0;x<160;x+=15)R(x,80,1,16,'#b9acea');R(0,80,160,1,'#a99bdf');
+  const P=[['football',6,14,56,'3'],['I',68,52,22,'1'],['play',18,48,34,'2'],['today',72,22,40,'4']];
+  P.forEach(([w,x,y,wd,n])=>{box(c,x,y,wd,16,n==='1'?'#fff3b0':'#fffaf2');txt(c,w,x+wd/2,y+8.5,'#3b3a5c',10);
+    box(c,x+wd-5,y-5,10,10,'#f4d35e');txt(c,n,x+wd,y+.5,'#3b3a5c',8)});
+  c.lineCap='round';[[58,98],[100,98]].forEach(([ox,oy])=>{c.strokeStyle='#e5484d';c.lineWidth=3;c.beginPath();c.moveTo(ox,oy);c.lineTo(79,68);c.stroke();c.strokeStyle='#fff';c.lineWidth=1;c.stroke()});
+  [[72,70],[86,70],[70,64],[88,64]].forEach(([x,y])=>R(x,y,2,2,'#f4d35e'));
+  R(124,58,4,4,'#f7a14f');R(136,58,4,4,'#f7a14f');R(125,58,2,6,'#f4d35e');R(137,58,2,6,'#f4d35e');
+  spr(c,BOT,BPAL,118,32,2);
+  c.strokeStyle='#f4d35e';c.lineWidth=1.5;c.lineCap='butt';c.beginPath();c.moveTo(114,34);c.lineTo(118,40);c.lineTo(113,45);c.moveTo(150,34);c.lineTo(146,41);c.lineTo(151,47);c.stroke();}
 
   /* 4: Vocab Flight – Year 5 — six slices, one per unit world, Minute Man in front and the robot on the run */
   c=pctx('g4');const r=(x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x,y,w,h)};
