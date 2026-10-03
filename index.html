@@ -19,11 +19,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Silkscreen&display=swap">
 <style>
+/* clearer 5, 8 and e for the pixel font */
+@font-face{font-family:'Pixelify Clear';font-weight:400;src:url(data:font/woff2;base64,d09GMgABAAAAAAJwABAAAAAABWQAAAIYAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhQbIBwqBmA/U1RBVC4ANBEICnRyATYCJAMICwYABCAFhAQHIAwHG0YEAJ4Dbmt8nJioYCfs12lSkxRGqOQ8//0aeu7bTUqoGFRUiWxlpw7IVbFF1Cwsw/gKRyRMbP/9z+2GJ6hiP86RaNbMos/8hrREKbxOCqSE2e1vmxPcYpMFSbUplMWqqAlswGkGuWQ0AHz/NwFL/DpMKfG1nwce2FoWJfqFWksDC8MoYkzb1TrdS1lk3SDUBcFYQPIao81QRm1t0y2k9NAaoIFFaBGy9MGNNmSV56CvlblhgHpdl3BlTpLPhvwRBmTj8Uvh6wCpu///0d3MXCCQj/Uac0RFjBRMRWGGyPFQkQJKh0pyg3oNCh2migqmipkD9HrBgdb6fe22gEhrJiAK9BiBGcA8AHpQBnps2551cK+msTu4VJdxZIyxIe0erfuurRj2+n7ucGhty3muPS3v73vrfWyZH7lvGwwAJwThx7XFMVOH6bp/8H32oRqAP3/O3dpWTXoYVCC8mllvFLROExSy1C7sr442lKniNYGpUQ6JSj8Kj1ljTPPBMt4n7Kz3w96yTMMB07KVGbQkO1lhbM4pqfVXb+Fwvfg0ChUiGmoa6ogtlYRY0jxJTBrZC7FxZgsQSz6HTnKFiIEQUjl8AYKmQsgVaKqqUmiQKnQhunJYqiQamQQ9VV0poSpzoiNrEkXIdOarE9X465a5hbmJVgU+CwREv7dfvWxP4gtoHDbCOxk/90D6AyeKuNoTQ7zP087el6sA) format('woff2');unicode-range:U+65}
+@font-face{font-family:'Pixelify Clear';font-weight:700;src:url(data:font/woff2;base64,d09GMgABAAAAAAKEABAAAAAABWwAAAIqAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhQbIBwqBmA/U1RBVCoANBEICnh0ATYCJAMICwYABCAFhAwHIAwHG0wEQC4GnDKPdSTpkRGdTk52xh9jGuatx8i7ESqd4PuxdN8/RBUknYnKRMWdDVCBXBWgqjpVVp2Or1CAQgMrIlVh72pN94LgojInQ6SQS6AD+4T7BetbXyVqLPN8dXt/b44g0ECjWJu5CSSBXNK2HzZgZvR/rV9h/+vW+O5W4r+HAehJBRR4YNdlUaIrXrdmYYFFgUZo1YWlt8rHe0JN425CoAoIP0bZiDy2vjy7g4gsDAAMmlPgk0ud3pMBOd4+yKae74VJelEXrlUy8VnLPyDANTy+HT4gHHf/fyBzLxsQEO/qBSb4hVAU6GIY4bsoSsQg8Vn2HBIy6PILdAVMAFlZgVMtX9ePgBADGggJZFHACDADQBYkuSyevhlu5I8nc9VtfyXtsZqNVFSj4mhqTqxOY/ledqWlf37xsfqVxhVv5b0ru69e562yqQDgqiD43+sXj7D6RfyZf4Dv406AP3/6Pw3aSWd995GXQPBiXvrkmkEfGPiS0an2YUBJV7Aj2FDJGX6RLeEBHcKQNyR1L5Gx5hNZSxlCzlDW9byFHDYE1ej/21nFuONgsrxyyEQSwrU0tDRxdySIuyJ7gTQywSvu1p7BxV1xmBToiHATHiIxOVxcgYQQi6urrk4kIxLPQc2RSVeHZAJEXtQ11Wrb4j5bbiCRR7PnaKppxNs9Fy5dWOjNm15TtfRXR7nTHiCHS2YycMr5qAWP8Ac+NWXSnPiBQXYIP0n/DSwAAAA=) format('woff2');unicode-range:U+65}
+@font-face{font-family:'Pixelify Clear';font-weight:400;src:url(data:font/woff2;base64,d09GMgABAAAAAAKcAA8AAAAABhQAAAJEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcKgZgP1NUQVQuADwRCAqCKIF9ATYCJAMKCwgABCAFhBgHIAwHG9sEERWU2yRfHPBkeKMMl7YjlAkbeeKDuC/V69x5Hw//v7//n2ufc/GY3heYvrMTqCZFh25EaHQpFPhAye4CGk4ljPqfRFHSmosQWtvinAdlIkekPnVURHqQdoBJTwFwcep5pkUkb1GL4BhDc7FYwEa7waoFCxZsDauODdRaQStY45ZKpEQ3M3PamZOM7fPeUQVqtdVeTJg0F1U5FAVAoFZ3PSWlWeOq+f1oKe4JeeoWJ5RIt9MhHEnHJvHKYL9BBZf/HL8h9w0zMjv5/6vsdHRCQDxMt9FRJoSqQJNAW2nr0tsDkgwpIk6QboOEDE0ygSa5nijLhTQzKwrEf1s8KR4JQIiiECADZTTDdCwB5CCpqssxfUalobygoVQ/NxrMizrTA0KrY1pDCBsoAxpG9fzQhcf6fut7PO9z+jCmNS+dKFtuSyUTriq5O18lcbJ10jby8oVxW6nO3XsxCASdRnqaG2O/VbPsK7zrQAPB5887ZmyxPs1J51CWQPCSdrojkMaNEKCk4c8sStOMNVYg01cdCFhWa49M5DW4zBlCW5chafQCMuO97s01KGkdbaGscwynGw2P2YygPo55Ed5PwKz74U+lLBQEXuDDvUA4lz9sSvGHW9IxnKmvMFOwfKuiJwYtT1UDL1xXltL0d+pkfeuif2JUP3cqYQ/TF9pn3WBCV5TvhuS+423fjI+n4zZ2SPZBdlv7ROKy78BYbZFWSO1Iqn729TijclDscNk4PUn3tNu/8Cu8OdiKK4Li9Sj2ns+PAgA=) format('woff2');unicode-range:U+35,U+38}
+@font-face{font-family:'Pixelify Clear';font-weight:700;src:url(data:font/woff2;base64,d09GMgABAAAAAAKkAA8AAAAABgQAAAJKAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGyAcKgZgP1NUQVQqADwRCAqCKIF9ATYCJAMKCwgABCAFhAwHIAwHG8sEEdWTqyRfHNjGpMZeqRGyaDpIByOvpilvEOZPn6X7ex9BtUb27O4DYAgVkUtFqI9CduiAXCJMWEWz8IAoNJ7/7+1fUbYGOI36Cw2Ltnv2MIpG0dK/ZhBRVAL1vxxu4wAYXNcjlcU3kpOUDyNOB9fUjyL4syd48RerWtpwgFEaDTbBB1pEcoXIdGADnbk1nODA10QqjjqOIRH1+XdUgUbDRsWKlbqjegUqgECjqaZLjLvWPRv9SP1kfShpYXyrYROTFpxyN/HeHL+DH8T/HL+dLplvUb7+/5LPhCIC4mm6MV4WQr1At8CwdHD74CNIAl46k5DRLUvrFdNRqwjJfIsq1H9b3avuCECIijaQQS16MIZtgAKSek2lDl5V11a7qaWmeX202BBNxgrOakJWSwm2YFTTLDs+1ObTtajPQ7KVtGw8PrzGsnUWMwDGzuZuqJkWLBTo3Hj3BIy8BnuQccEKIIv2YhAIem+Z3ollf5LzL/g8rpzw48f00PKqtDddFmolEHyiL70kGMtrCGGk09CWtNq+I5DN1gRCTGp0SBalATc4Qhh2A5J6jyBb5FVp4aDGYKRQa2JkbKsFoTlBcxwLRsk9lD9oUzmKSQCT0WQMPhCFxoNYrYSCogq8I+Xb6k4zmASwywLRjlmtRUIwfjMcYuq/nMWDRMshpAiGcriU7ldr32jVg4CR22uRjgej8cnt7X47bWUt19tXZ/6g81QrkJVZ19aG+0sq81Ov5xNHTfADT8VAOzy8ny9/+P7BZgi5aRL5cPJKGQAAAA==) format('woff2');unicode-range:U+35,U+38}
 :root{
   --sky:#e7e2ff; --ink:#3b3a5c; --panel:#fffaf2; --edge:#5b5a8a;
   --mm-blue:#3d6fd9; --mm-red:#e5484d; --sm-green:#5bb86a; --sm-yellow:#f4d35e;
   --soft:#cfc9f3;
-  --f-pix:"Pixelify Sans","Courier New",monospace; --f-label:"Silkscreen","Courier New",monospace;
+  --f-pix:"Pixelify Clear","Pixelify Sans","Courier New",monospace; --f-label:"Silkscreen","Courier New",monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -99,8 +104,8 @@ footer{text-align:center;font-family:var(--f-label);font-size:10px;letter-spacin
       <canvas id="g4" width="160" height="96" aria-hidden="true"></canvas>
       <div class="info">
         <span class="tag" style="background:#c47a00">VOCABULARY · UNIT 1</span>
-        <h2>Vocab Flight</h2>
-        <p>M1S-T4K3 has stolen our words! Fly through the gate with the right English word.</p>
+        <h2>Vocab Flight – Unit 1</h2>
+        <p>M1S-T4K3 has stolen our words! Fly through the city and pick the gate with the right English word.</p>
         <span class="play">PLAY ▶</span>
       </div>
     </a>
@@ -115,9 +120,30 @@ const BOT=["......aa......",".......d......","..dddddddddd..","..dlllllllld..","
 const BPAL={a:'#ffd166',d:'#6b6f9e',l:'#e3e8f7',o:'#ff6b81',t:'#8de0d0',r:'#b8c4e0'};
 const SM=["...hhhhhh...","..hhhhhhhh..","..hsssssshh.","..mmmmmmmm..","..mekmmekm..","...ssssss...","...sskkss...","..yggggggy..",".yggggggggy.",".yggyyyyggy.","yyggggggggyy","yysggggggsyy","yy.gggggg.yy","y..gg..gg..y","...gg..gg...","...bb..bb..."];
 const SPAL={h:'#c98a4b',s:'#f6c9a0',m:'#3fa34d',g:'#6cc070',y:'#f4d35e',e:'#fff',k:'#3b3a5c',b:'#3a7d44'};
+const MM=[
+"......kkkk......",
+".....khhhhk.....",
+"....khhhhhhk....",
+"....kmmmmmmkmm..",
+"....khhhhhhk.mmm",
+".....khhhhk.....",
+"..kkkbbbbbbkkk..",
+".kbbkccccccckbbk",
+".kbkcccccccccckb",
+"..kccccwwwcccck.",
+"..kcccwkwwwccck.",
+"..kcccwwkkwccck.",
+"..kccccwwwcccck.",
+"..kccccccccccck.",
+"...kccccccccck..",
+"...kdccccccdk...",
+"....kbk..kbk....",
+"....kyk..kyk....",
+"....kkk..kkk...."];
+const MMPAL={k:'#3b3a5c',h:'#7a4e2d',m:'#3d6fd9',b:'#3d6fd9',c:'#e5484d',d:'#b8323a',w:'#fffaf2',y:'#f4d35e'};
 const ctx=id=>document.getElementById(id).getContext('2d');
 const box=(c,x,y,w,h,fill,edge)=>{c.fillStyle=edge||'#5b5a8a';c.fillRect(x,y,w,h);c.fillStyle=fill;c.fillRect(x+1,y+1,w-2,h-2)};
-const txt=(c,t,x,y,col,size)=>{c.fillStyle=col||'#3b3a5c';c.font=`700 ${size||9}px "Pixelify Sans",monospace`;c.textAlign='center';c.textBaseline='middle';c.fillText(t,x,y)};
+const txt=(c,t,x,y,col,size)=>{c.fillStyle=col||'#3b3a5c';c.font=`700 ${size||9}px "Pixelify Clear","Pixelify Sans",monospace`;c.textAlign='center';c.textBaseline='middle';c.fillText(t,x,y)};
 
 spr(ctx('sm'),SM,SPAL,0,0,1);
 
@@ -148,16 +174,19 @@ function draw(){
       box(c,x+wd-6,y-6,12,12,'#f4d35e');txt(c,n,x+wd,y+0.5,'#3b3a5c',9)});
   spr(c,BOT,BPAL,112,52,2);
 
-  /* 4: Vocab Flight — German word on top, robot flying away, two word gates */
-  c=ctx('g4');c.fillStyle='#cfe3ff';c.fillRect(0,0,160,96);
-  c.fillStyle='#fff';[[8,40,20],[120,70,24],[60,84,16]].forEach(([x,y,w])=>{c.fillRect(x,y,w,6);c.fillRect(x+4,y-3,w-8,3)});
-  box(c,40,4,80,16,'#fffaf2');txt(c,'Schule',80,12.5,'#3b3a5c',10);
-  spr(c,BOT,BPAL,128,2,2);
-  c.fillStyle='#ffd166';c.fillRect(122,14,4,2);c.fillRect(115,18,6,2);
-  [['school',14,'#5bb86a'],['house',84,'#e5484d']].forEach(([w,x,col])=>{
-    c.fillStyle='#5b5a8a';c.fillRect(x,34,4,56);c.fillRect(x+54,34,4,56);
-    c.fillStyle=col;c.fillRect(x+1,35,2,54);c.fillRect(x+55,35,2,54);
-    box(c,x,30,58,16,'#fffaf2');txt(c,w,x+29,38.5,'#3b3a5c',10)});
+  /* 4: Vocab Flight – Unit 1 — Minute Man from behind, flying down a street towards three word gates */
+  c=ctx('g4');c.fillStyle='#d8e2ff';c.fillRect(0,0,160,96);c.fillStyle='#f2def3';c.fillRect(0,26,160,14);
+  c.fillStyle='#fff';c.fillRect(14,8,18,4);c.fillRect(18,5,10,3);c.fillRect(118,12,16,4);
+  c.fillStyle='#8f8bb8';c.beginPath();c.moveTo(66,40);c.lineTo(94,40);c.lineTo(160,96);c.lineTo(0,96);c.closePath();c.fill();
+  [[0,10,30,'#f4b6c2'],[22,22,20,'#c7e9b4'],[36,30,12,'#ffe2a8']].forEach(([x,y,w,col])=>{c.fillStyle=col;c.fillRect(x,y,w,96-y);c.fillStyle='#fff3b0';for(let j=y+4;j<90;j+=8)c.fillRect(x+3,j,4,4)});
+  [[130,8,30,'#b9d7f7'],[118,20,20,'#d7c8f5'],[112,30,12,'#a8e0dc']].forEach(([x,y,w,col])=>{c.fillStyle=col;c.fillRect(x,y,w,96-y);c.fillStyle='#fff3b0';for(let j=y+4;j<90;j+=8)c.fillRect(x+w-7,j,4,4)});
+  spr(c,BOT,BPAL,73,16,1);
+  [['bag','#ff7b7b',48],['pen','#6aaeff',70],['book','#f7d154',92]].forEach(([w,col,x])=>{
+    c.fillStyle='#3b3a5c';c.fillRect(x,40,20,2);c.fillRect(x,40,2,18);c.fillRect(x+18,40,2,18);
+    c.fillStyle=col;c.fillRect(x+1,41,18,1);c.fillRect(x+1,41,1,16);c.fillRect(x+18,41,1,16);
+    box(c,x-1,31,22,9,'#fffaf2');txt(c,w,x+10,35.8,'#3b3a5c',7)});
+  box(c,52,2,56,13,'#fffaf2');txt(c,'Tasche',80,8.8,'#e5484d',9);
+  spr(c,MM,MMPAL,64,56,2);
 }
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(draw);
 </script>
