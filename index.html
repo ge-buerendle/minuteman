@@ -105,7 +105,7 @@ footer{text-align:center;font-family:var(--f-label);font-size:10px;letter-spacin
       <div class="info">
         <span class="tag" style="background:#c47a00">VOCABULARY · UNIT 1</span>
         <h2>Vocab Flight – Unit 1</h2>
-        <p>M1S-T4K3 has stolen our words! Fly through the city and pick the gate with the right English word.</p>
+        <p>M1S-T4K3 is hiding in the school with our words! Chase him through the corridors and pick the door with the right English word.</p>
         <span class="play">PLAY ▶</span>
       </div>
     </a>
@@ -176,18 +176,21 @@ function draw(){
       box(c,x+wd-6,y-6,12,12,'#f4d35e');txt(c,n,x+wd,y+0.5,'#3b3a5c',9)});
   spr(c,BOT,BPAL,112,52,2);
 
-  /* 4: Vocab Flight – Unit 1 — Minute Man from behind, flying down a street towards three word gates */
-  c=pctx('g4');c.fillStyle='#d8e2ff';c.fillRect(0,0,160,96);c.fillStyle='#f2def3';c.fillRect(0,26,160,14);
-  c.fillStyle='#fff';c.fillRect(14,8,18,4);c.fillRect(18,5,10,3);c.fillRect(118,12,16,4);
-  c.fillStyle='#8f8bb8';c.beginPath();c.moveTo(66,40);c.lineTo(94,40);c.lineTo(160,96);c.lineTo(0,96);c.closePath();c.fill();
-  [[0,10,30,'#f4b6c2'],[22,22,20,'#c7e9b4'],[36,30,12,'#ffe2a8']].forEach(([x,y,w,col])=>{c.fillStyle=col;c.fillRect(x,y,w,96-y);c.fillStyle='#fff3b0';for(let j=y+4;j<90;j+=8)c.fillRect(x+3,j,4,4)});
-  [[130,8,30,'#b9d7f7'],[118,20,20,'#d7c8f5'],[112,30,12,'#a8e0dc']].forEach(([x,y,w,col])=>{c.fillStyle=col;c.fillRect(x,y,w,96-y);c.fillStyle='#fff3b0';for(let j=y+4;j<90;j+=8)c.fillRect(x+w-7,j,4,4)});
-  spr(c,BOT,BPAL,73,16,1);
+  /* 4: Vocab Flight – Unit 1 — Minute Man flies down a school corridor towards three classroom doors */
+  c=pctx('g4');const P=(pts,col)=>{c.fillStyle=col;c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fill()};
+  P([[0,0],[160,0],[116,24],[44,24]],'#f4f0e6');P([[66,2],[94,2],[90,8],[70,8]],'#fffbe0');
+  P([[0,0],[44,24],[44,72],[0,96]],'#cdeee2');P([[160,0],[116,24],[116,72],[160,96]],'#cdeee2');
+  P([[0,82],[44,66],[44,72],[0,96]],'#98d4c0');P([[160,82],[116,66],[116,72],[160,96]],'#98d4c0');
+  P([[44,72],[116,72],[160,96],[0,96]],'#b9b4d9');P([[30,79],[130,79],[140,84],[20,84]],'#c6c1e3');
+  [[4,'#6aaeff'],[20,'#f7d154']].forEach(([x,col])=>{P([[x,22+x*.5],[x+12,28+x*.5],[x+12,76-x*.2],[x,82-x*.2]],col);c.fillStyle='#3b3a5c';c.fillRect(x+5,46+x*.15,1,4)});
+  [[144,'#ff7b7b'],[128,'#7fd18b']].forEach(([x,col])=>{const k=160-x;P([[x+12,22+(k-12)*.5],[x,28+(k-12)*.5],[x,76-(k-12)*.2],[x+12,82-(k-12)*.2]],col)});
+  c.fillStyle='#f3e6c4';c.fillRect(44,24,72,48);c.fillStyle='#e2cd98';c.fillRect(44,62,72,10);
   [['bag','#ff7b7b',48],['pen','#6aaeff',70],['book','#f7d154',92]].forEach(([w,col,x])=>{
-    c.fillStyle='#3b3a5c';c.fillRect(x,40,20,2);c.fillRect(x,40,2,18);c.fillRect(x+18,40,2,18);
-    c.fillStyle=col;c.fillRect(x+1,41,18,1);c.fillRect(x+1,41,1,16);c.fillRect(x+18,41,1,16);
-    box(c,x-1,31,22,9,'#fffaf2');txt(c,w,x+10,35.8,'#3b3a5c',7)});
-  box(c,52,2,56,13,'#fffaf2');txt(c,'Tasche',80,8.8,'#e5484d',9);
+    c.fillStyle='#5b5a8a';c.fillRect(x-1,43,22,29);c.fillStyle=col;c.fillRect(x+1,45,18,27);
+    c.fillStyle='#cfe8ff';c.fillRect(x+6,49,8,7);c.fillStyle='#3b3a5c';c.fillRect(x+15,59,2,2);
+    box(c,x-1,33,22,9,'#fffaf2');txt(c,w,x+10,37.8,'#3b3a5c',7)});
+  box(c,52,6,56,13,'#fffaf2');txt(c,'Tasche',80,12.8,'#e5484d',9);
+  spr(c,BOT,BPAL,26,8,1);
   spr(c,MM,MMPAL,64,56,2);
 }
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(draw);
